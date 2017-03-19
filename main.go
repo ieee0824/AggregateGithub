@@ -42,7 +42,7 @@ func main() {
 
 	result := make([]int, 24)
 	for _, v := range list {
-		punchcards, _, err := client.Repositories.ListPunchCard(ctx, token, v)
+		punchcards, _, err := client.Repositories.ListPunchCard(ctx, user, v)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -55,4 +55,10 @@ func main() {
 	for k, v := range result {
 		fmt.Println(k, v)
 	}
+
+	all := 0
+	for _, v := range result {
+		all += v
+	}
+	fmt.Println(all)
 }
